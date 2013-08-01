@@ -1,0 +1,12 @@
+#generated intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+#generated eclipse project files
+.classpath
+.project
+.settings/
+
+

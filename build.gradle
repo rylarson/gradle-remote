@@ -1,0 +1,16 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+group = 'co.rylarson'
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    groovy gradleApi()
+    groovy localGroovy()
+    groovy 'org.apache.ant:ant-jsch:+'
+    groovy 'jsch:jsch:+'
+}
