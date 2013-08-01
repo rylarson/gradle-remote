@@ -1,7 +1,7 @@
 apply plugin: 'groovy'
 apply plugin: 'idea'
 
-group = 'co.rylarson'
+group = 'co.ryanlarson'
 version = '0.1.0'
 
 repositories {
@@ -13,4 +13,8 @@ dependencies {
     groovy localGroovy()
     groovy 'org.apache.ant:ant-jsch:+'
     groovy 'jsch:jsch:+'
+}
+
+task wrapper(type: Wrapper){
+    gradleVersion = '1.6'
 }
