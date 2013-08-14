@@ -1,5 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'idea'
+apply plugin: 'maven'
 
 group = 'co.ryanlarson'
 version = '0.1.0'
@@ -9,12 +10,22 @@ repositories {
 }
 
 dependencies {
-    groovy gradleApi()
-    groovy localGroovy()
-    groovy 'org.apache.ant:ant-jsch:+'
-    groovy 'jsch:jsch:+'
+    compile gradleApi()
+    compile localGroovy()
+
+    testCompile 'org.apache.sshd:apache-sshd:0.8.0'
 }
 
-task wrapper(type: Wrapper){
+task wrapper(type: Wrapper) {
     gradleVersion = '1.6'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main
+    classifier = 'sources'
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
 }

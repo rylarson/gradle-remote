@@ -1,0 +1,22 @@
+import edu.pdx.cs.rylarson.ssh.SshTask
+
+apply plugin: 'base'
+apply plugin: edu.pdx.cs.rylarson.RemotePlugin
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'co.ryanlarson', name: 'gradle-remote', version: '+'
+    }
+}
+
+task testSsh(type: SshTask) {
+    host = "hostname"
+    username = "root"
+    password = "toor"
+    trust = true
+    command = "uname"
+}
