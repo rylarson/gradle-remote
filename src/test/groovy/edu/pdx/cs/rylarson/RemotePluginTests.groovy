@@ -21,18 +21,18 @@ class RemotePluginTests {
     @Test
     void testRemotePluginAddsSshTaskToProject() {
         Project project = ProjectBuilder.builder().build()
-        assertNull(project.tasks.find { it.name == 'SshTask' })
+        assertNull(project.tasks.find { it.name == 'Ssh' })
 
         project.apply plugin: RemotePlugin
-        assertTrue(project.tasks.find { it.name == 'SshTask' } instanceof Ssh)
+        assertTrue(project.tasks.find { it.name == 'Ssh' } instanceof Ssh)
     }
 
     @Test
     void testRemotePluginAddsScpTaskToProject() {
         Project project = ProjectBuilder.builder().build()
-        assertNull(project.tasks.find { it.name == 'ScpTask' })
+        assertNull(project.tasks.find { it.name == 'Scp' })
 
         project.apply plugin: RemotePlugin
-        assertTrue(project.tasks.find { it.name == 'ScpTask' } instanceof Scp)
+        assertTrue(project.tasks.find { it.name == 'Scp' } instanceof Scp)
     }
 }

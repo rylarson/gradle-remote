@@ -16,24 +16,8 @@ class RemotePlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        addRemoteConfiguration(project)
-        addMavenCentral(project)
-        addJschDependencies(project)
         addTasksToProject(project)
         defineAntTasks(project)
-    }
-
-    private void addRemoteConfiguration(Project project) {
-        project.configurations.create("remote")
-    }
-
-    private void addMavenCentral(Project project) {
-        project.repositories.add(project.repositories.mavenCentral())
-    }
-
-    private void addJschDependencies(Project project) {
-        project.dependencies.add("remote", "org.apache.ant:ant-jsch:+")
-        project.dependencies.add("remote", "com.jcraft:jsch:+")
     }
 
     private void addTasksToProject(Project project) {
@@ -45,12 +29,12 @@ class RemotePlugin implements Plugin<Project> {
         project.ant.taskdef(
                 name: 'ssh',
                 classname: 'org.apache.tools.ant.taskdefs.optional.ssh.SSHExec',
-                classpath: project.configurations.remote.asPath
+                classpath: project.buildscript.configurations.classpath.asPath
         )
         project.ant.taskdef(
                 name: 'scp',
                 classname: 'org.apache.tools.ant.taskdefs.optional.ssh.Scp',
-                classpath: project.configurations.remote.asPath
+                classpath: project.buildscript.configurations.classpath.asPath
         )
     }
 }

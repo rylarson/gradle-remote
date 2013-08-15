@@ -13,6 +13,9 @@ dependencies {
     compile gradleApi()
     compile localGroovy()
 
+    runtime 'org.apache.ant:ant-jsch:+'
+    runtime 'com.jcraft:jsch:+'
+
     testCompile 'org.apache.sshd:apache-sshd:0.8.0'
 }
 
