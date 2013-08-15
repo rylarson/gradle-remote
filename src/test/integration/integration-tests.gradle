@@ -1,5 +1,5 @@
-import edu.pdx.cs.rylarson.scp.ScpTask
-import edu.pdx.cs.rylarson.ssh.SshTask
+import edu.pdx.cs.rylarson.scp.Scp
+import edu.pdx.cs.rylarson.ssh.Ssh
 
 apply plugin: 'base'
 apply plugin: edu.pdx.cs.rylarson.RemotePlugin
@@ -14,7 +14,7 @@ buildscript {
     }
 }
 
-task testSsh(type: SshTask) {
+task testSsh(type: Ssh) {
     host = "hostname"
     username = "root"
     password = "toor"
@@ -22,6 +22,6 @@ task testSsh(type: SshTask) {
     command = "uname"
 }
 
-task testScp(type: ScpTask) {
+task testScp(type: Scp) {
 
 }

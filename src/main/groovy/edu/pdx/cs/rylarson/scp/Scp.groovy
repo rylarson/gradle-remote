@@ -10,10 +10,10 @@ import org.gradle.api.tasks.TaskAction
  * Time: 6:20 PM
  * To change this template use File | Settings | File Templates.
  */
-class ScpTask extends DefaultTask {
+class Scp extends DefaultTask {
 
     def file, localFile, remoteFile, todir, localTodir, localTofile,
-        remoteTodir, port, trust, knownhosts, failonerror, password,
+        remoteTodir, remoteTofile, port, trust, knownhosts, failonerror, password,
         keyfile, passphrase, verbose, sftp, preserveLastModified
 
     @TaskAction
@@ -31,6 +31,7 @@ class ScpTask extends DefaultTask {
                 localTodir: localTodir,
                 localTofile: localTofile,
                 rempoteTodir: remoteTodir,
+                remoteTofile: remoteTofile,
                 port: port,
                 trust: trust,
                 knownhosts: knownhosts,

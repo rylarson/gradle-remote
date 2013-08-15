@@ -1,7 +1,7 @@
 package edu.pdx.cs.rylarson
 
-import edu.pdx.cs.rylarson.scp.ScpTask
-import edu.pdx.cs.rylarson.ssh.SshTask
+import edu.pdx.cs.rylarson.scp.Scp
+import edu.pdx.cs.rylarson.ssh.Ssh
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -37,8 +37,8 @@ class RemotePlugin implements Plugin<Project> {
     }
 
     private void addTasksToProject(Project project) {
-        project.task('scp', type: ScpTask)
-        project.task('ssh', type: SshTask)
+        project.task('scp', type: Scp)
+        project.task('ssh', type: Ssh)
     }
 
     private void defineAntTasks(Project project) {

@@ -1,7 +1,7 @@
 package edu.pdx.cs.rylarson
 
-import edu.pdx.cs.rylarson.scp.ScpTask
-import edu.pdx.cs.rylarson.ssh.SshTask
+import edu.pdx.cs.rylarson.scp.Scp
+import edu.pdx.cs.rylarson.ssh.Ssh
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Test
@@ -24,7 +24,7 @@ class RemotePluginTests {
         assertNull(project.tasks.find { it.name == 'SshTask' })
 
         project.apply plugin: RemotePlugin
-        assertTrue(project.tasks.find { it.name == 'SshTask' } instanceof SshTask)
+        assertTrue(project.tasks.find { it.name == 'SshTask' } instanceof Ssh)
     }
 
     @Test
@@ -33,6 +33,6 @@ class RemotePluginTests {
         assertNull(project.tasks.find { it.name == 'ScpTask' })
 
         project.apply plugin: RemotePlugin
-        assertTrue(project.tasks.find { it.name == 'ScpTask' } instanceof ScpTask)
+        assertTrue(project.tasks.find { it.name == 'ScpTask' } instanceof Scp)
     }
 }

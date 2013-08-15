@@ -1,6 +1,6 @@
 package edu.pdx.cs.rylarson
 
-import edu.pdx.cs.rylarson.ssh.SshTask
+import edu.pdx.cs.rylarson.ssh.Ssh
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Test
@@ -17,7 +17,7 @@ class RemotePluginIntegrationTests {
     @Test
     void testSshTaskUsingPassword(){
         Project project = ProjectBuilder.builder().build()
-        project.task('SshTask', type: SshTask)
+        project.task('SshTask', type: Ssh)
 
     }
 }
