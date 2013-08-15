@@ -1,3 +1,4 @@
+import edu.pdx.cs.rylarson.scp.ScpTask
 import edu.pdx.cs.rylarson.ssh.SshTask
 
 apply plugin: 'base'
@@ -19,4 +20,8 @@ task testSsh(type: SshTask) {
     password = "toor"
     trust = true
     command = "uname"
+}
+
+task testScp(type: ScpTask) {
+
 }
