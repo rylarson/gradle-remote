@@ -17,12 +17,13 @@ class SshTask extends DefaultTask {
         timeout, input, verbose, inputproperty, inputstring, usepty
 
     @TaskAction
-    def antSsh() {
+    def ssh() {
         project.ant.ssh(sshArguments)
     }
 
+    //get any properties set by the user, otherwise use the defaults
     def getSshArguments() {
-        def sshArguments = [
+        return [
                 host: host,
                 username: username,
                 command: command,
@@ -44,8 +45,6 @@ class SshTask extends DefaultTask {
                 inputproperty: inputproperty,
                 inputstring: inputstring,
                 usepty: usepty
-        ]
-
-        return sshArguments.findAll { it.value }
+        ].findAll { it.value }
     }
 }

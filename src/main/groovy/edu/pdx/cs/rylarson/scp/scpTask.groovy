@@ -12,31 +12,35 @@ import org.gradle.api.tasks.TaskAction
  */
 class ScpTask extends DefaultTask {
 
-    def file
-    def localFile
-    def remoteFile
-    def todir
-    def localTodir
-    def localTofile
-    def remoteTodir
-    def port = 22
-    def trust = false
-    //def knownhosts = "${user.home}/.SshTask/known_hosts"
-    def failonerror = true
-    def password
-    def keyfile
-    def passphrase = ""
-    def verbose = false
-    def sftp = false
-    def preserveLastModified = false
+    def file, localFile, remoteFile, todir, localTodir, localTofile,
+        remoteTodir, port, trust, knownhosts, failonerror, password,
+        keyfile, passphrase, verbose, sftp, preserveLastModified
 
     @TaskAction
-    def antScp() {
-        ant.scp(scpProperties)
+    def scp() {
+        ant.scp(scpArguments)
     }
 
-    def getScpProperties() {
-        def declaredFields = [this.class.declaredFields.findAll { !it.synthetic }]
-        return properties.findAll { declaredFields.contains(it.key) && it.value }
+    //get any properties set by the user, otherwise use the defaults
+    def getScpArguments() {
+        return [
+                file: file,
+                localFile: localFile,
+                remoteFile: remoteFile,
+                todir: todir,
+                localTodir: localTodir,
+                localTofile: localTofile,
+                rempoteTodir: remoteTodir,
+                port: port,
+                trust: trust,
+                knownhosts: knownhosts,
+                failonerror: failonerror,
+                password: password,
+                keyfile: keyfile,
+                passphrase: passphrase,
+                verbose: verbose,
+                sftp: sftp,
+                preserveLastModified: preserveLastModified
+        ].findAll { it.value }
     }
 }
