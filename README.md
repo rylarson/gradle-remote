@@ -11,7 +11,12 @@ to allow the use of different protocols like psexec, etc.
 
 #### Usage
 
-Applying the Remote plugin will add Ssh and Scp task types to the project. 
+Applying the Remote plugin will add Ssh and Scp task types to the project 
+and you can use them like any other task. 
+
+This plugin was inspried by the ant functionality for scp and ssh, and 
+all of the properties have the exact same names and semantics as the ant
+tasks do because this plugin utilizes Groovys Ant integration. 
 
 ```groovy
 import edu.cs.pdx.rylarson.RemotePlugin
@@ -27,7 +32,7 @@ task sshTask(type: Ssh) {
 
 task scpTask(type: Ssh) {
   localFile = file('testScp.txt')
-  remoteTodir = user@host:~/todir
+  remoteTodir = 'user@host:~/todir'
   password = 'password'
 }
 ```
